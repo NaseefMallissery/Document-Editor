@@ -1,0 +1,399 @@
+:root {
+  --sidebar-width: 280px;
+}
+
+body {
+  background: #f1f3f6;
+}
+
+/* ---------- App layout (was missing, so the sidebar had no layout) ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: #fff;
+  border-right: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.main-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 700;
+}
+
+.new-document {
+  margin-bottom: 16px;
+}
+
+.document-list {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0 -4px;
+  padding: 0 4px;
+}
+
+.document-list-item {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.document-list-item:hover {
+  background: #f1f3f6;
+}
+
+.document-list-item.selected {
+  background: #e7f1ff;
+}
+
+.document-select {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.document-icon {
+  color: #6c757d;
+}
+
+.document-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.document-name strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.document-name small {
+  color: #6c757d;
+}
+
+.delete-document {
+  border: 0;
+  background: transparent;
+  color: #6c757d;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 4px 10px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.document-list-item:hover .delete-document,
+.delete-document:focus-visible {
+  opacity: 1;
+}
+
+.delete-document:hover {
+  color: #dc3545;
+}
+
+.sidebar-note {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff8e1;
+  font-size: 0.75rem;
+}
+
+.sidebar-note p {
+  margin: 4px 0 0;
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    flex-basis: auto;
+    height: auto;
+    max-height: 45vh;
+  }
+}
+
+/* ---------- Header / toolbar ---------- */
+.document-title-input {
+  border: 1px solid transparent;
+  background: transparent;
+  font-weight: 600;
+}
+
+.document-title-input:hover,
+.document-title-input:focus {
+  border-color: #ced4da;
+  background: #fff;
+}
+
+.editor-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.toolbar-select {
+  width: auto;
+  min-width: 110px;
+}
+
+.toolbar-btn {
+  min-width: 32px;
+}
+
+.toolbar-row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #dee2e6;
+}
+
+.toolbar-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6c757d;
+}
+
+.swatch {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid rgb(0 0 0 / 25%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.swatch:hover {
+  transform: scale(1.15);
+}
+
+.form-control-color {
+  width: 36px;
+  padding: 2px;
+}
+
+/* ---------- Document page ---------- */
+.document-paper {
+  max-width: 1000px;
+  min-height: 700px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.document-editor-content {
+  min-height: 600px;
+  padding: 24px;
+  outline: none;
+  overflow-wrap: anywhere;
+}
+
+.document-editor-content h1 { font-size: 2rem; }
+.document-editor-content h2 { font-size: 1.5rem; }
+.document-editor-content h3 { font-size: 1.25rem; }
+
+.document-editor-content p {
+  line-height: 1.7;
+}
+
+.document-editor-content blockquote {
+  margin: 12px 0;
+  padding-left: 14px;
+  border-left: 3px solid #ced4da;
+  color: #495057;
+}
+
+.document-editor-content a {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.document-editor-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0;
+}
+
+.document-editor-content img[data-align='center'] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.document-editor-content img[data-align='right'] {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.document-editor-content mark {
+  padding: 0 0.1em;
+  border-radius: 2px;
+}
+
+.document-editor-content img.ProseMirror-selectednode {
+  outline: 2px solid #0d6efd;
+}
+
+/* ---------- Tables (resizable tables need this CSS to work) ---------- */
+.document-editor-content .tableWrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.document-editor-content table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  overflow: hidden;
+}
+
+.document-editor-content th,
+.document-editor-content td {
+  position: relative;
+  min-width: 1em;
+  border: 1px solid #ccc;
+  padding: 8px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.document-editor-content th {
+  background: #f1f3f6;
+  font-weight: 600;
+  text-align: left;
+}
+
+.document-editor-content .selectedCell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgb(13 110 253 / 15%);
+  pointer-events: none;
+}
+
+.document-editor-content .column-resize-handle {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  bottom: -2px;
+  width: 4px;
+  background: #0d6efd;
+  pointer-events: none;
+}
+
+.document-editor-content.resize-cursor {
+  cursor: col-resize;
+}
+
+/* ---------- Signature ---------- */
+.signature-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 560 / 150;
+  border: 1px dashed #adb5bd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: crosshair;
+  touch-action: none; /* needed so touch screens draw instead of scrolling */
+}
+
+.signature-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgb(0 0 0 / 50%);
+}
+
+.signature-modal {
+  width: min(600px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ---------- Print ---------- */
+@media print {
+  /* Without this, browsers drop cell/highlight background colors when printing. */
+  .document-paper,
+  .document-paper * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .app-layout,
+  .main-area,
+  .document-workspace {
+    display: block;
+    padding: 0 !important;
+  }
+
+  .document-paper {
+    max-width: none;
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .document-paper .card-body {
+    padding: 0;
+  }
+
+  .document-editor-content {
+    padding: 0;
+  }
+}
