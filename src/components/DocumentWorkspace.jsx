@@ -33,7 +33,7 @@ const AUTOSAVE_DELAY = 800;
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const HEADER_PRESETS = [
   '#1f3a5f',
-  '#0d6efd',
+  '#002C3C',
   '#198754',
   '#6f42c1',
   '#dc3545',
